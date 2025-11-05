@@ -1,178 +1,227 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ender Pandas | Enderman Chill Server</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ender Pandas — Chill Discord Server</title>
+  <meta name="description" content="Ender Pandas — a chill Discord community for LemonCloud players. Includes kids, teens, and gamers who just want to hang out." />
+  <meta name="theme-color" content="#8b5cf6" />
+  <meta property="og:title" content="Ender Pandas" />
+  <meta property="og:description" content="A chill, Enderman-vibe Discord server for LemonCloud players and friends." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/825/825540.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: "Press Start 2P", cursive;
-      background: radial-gradient(circle at top, #120018 0%, #050006 100%);
-      color: #e0caff;
-      margin: 0;
-      text-align: center;
-      overflow-x: hidden;
+    :root{
+      --bg:#07000c;
+      --card:#0d0016;
+      --muted:#c4b5fd;
+      --text:#f5f3ff;
+      --accent:#8b5cf6;
+      --accent-2:#6d28d9;
+      --shadow:0 20px 40px rgba(0,0,0,.45);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; color:var(--text);
+      background:
+        radial-gradient(900px 600px at 80% -10%, rgba(139,92,246,.25) 0%, transparent 60%),
+        radial-gradient(1000px 800px at 10% 120%, rgba(109,40,217,.25) 0%, transparent 60%),
+        var(--bg);
+      font-family:Inter, system-ui, sans-serif;
+      line-height:1.6;
+    }
+    a{color:var(--accent); text-decoration:none}
+    .container{width:min(1100px,92%); margin-inline:auto}
+
+    header{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(140%) blur(8px);
+      background:rgba(20,0,35,.55);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:.8rem; color:var(--text)}
+    .brand-logo{
+      width:38px; height:38px; border-radius:8px;
+      background:linear-gradient(135deg, var(--accent), var(--accent-2));
+      display:grid; place-items:center;
+      font-family:'Press Start 2P'; font-size:.9rem; color:#080013;
+      box-shadow:var(--shadow);
+    }
+    .nav-links{display:flex; gap:1rem}
+    .nav-links a{padding:.5rem .9rem; border-radius:10px; opacity:.9}
+    .nav-links a:hover{background:rgba(255,255,255,.06); opacity:1}
+    .menu-btn{display:none}
+
+    /* HERO */
+    .hero{padding:80px 0 48px}
+    .hero-grid{display:grid; grid-template-columns:1.2fr .8fr; gap:32px; align-items:center}
+    .hero h1{font-family:'Press Start 2P'; font-size:clamp(1.3rem,3vw,2rem); margin-bottom:18px; color:var(--accent)}
+    .hero p{color:var(--muted); margin-bottom:24px}
+    .btns{display:flex; gap:12px; flex-wrap:wrap}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 18px; border-radius:14px; font-weight:700;
+    }
+    .btn.primary{background:var(--accent); color:#0b0016; box-shadow:0 10px 20px rgba(139,92,246,.3)}
+    .btn.primary:hover{background:var(--accent-2)}
+    .btn.ghost{border:1px solid rgba(255,255,255,.1); color:var(--text)}
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      border:1px solid rgba(255,255,255,.08); border-radius:var(--radius);
+      box-shadow:var(--shadow); padding:18px;
     }
 
-    header {
-      background: linear-gradient(180deg, #240030 0%, #10001a 100%);
-      padding: 50px 20px;
-      border-bottom: 3px solid #8f00ff;
-      box-shadow: 0 0 20px #8f00ff;
-    }
+    section{padding:40px 0}
+    .section-title{font-weight:800; font-size:1.2rem; margin-bottom:12px}
+    .grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .feature{padding:18px}
+    .feature h3{margin:.3rem 0 .4rem; color:var(--accent)}
 
-    h1 {
-      font-size: 1.6rem;
-      color: #d39cff;
-      text-shadow: 0 0 10px #8f00ff, 0 0 20px #b300ff;
-    }
+    .two{display:grid; grid-template-columns:1fr 1fr; gap:18px}
+    .widget-wrap{display:grid; place-items:center}
+    .widget{width:100%; max-width:420px; height:520px; border:0; border-radius:14px}
 
-    h2 {
-      font-size: 0.8rem;
-      color: #b78fff;
-      margin-top: 10px;
-    }
+    ol.rules{padding-left:1.2rem; margin:0}
+    ol.rules li{margin:.4rem 0}
 
-    .invite-btn {
-      display: inline-block;
-      margin: 30px auto;
-      padding: 16px 28px;
-      background-color: #8f00ff;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 0.8rem;
-      box-shadow: 0 0 10px #b300ff;
-      transition: transform 0.2s, box-shadow 0.3s;
-    }
+    footer{padding:36px 0 60px; color:#c4b5fd; opacity:.9; font-size:.9rem}
 
-    .invite-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #b300ff, 0 0 40px #8f00ff;
-    }
-
-    section {
-      padding: 50px 20px;
-    }
-
-    p {
-      font-size: 0.75rem;
-      color: #d4baff;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .faq {
-      background: rgba(143, 0, 255, 0.1);
-      border: 1px solid #8f00ff;
-      border-radius: 10px;
-      padding: 20px;
-      max-width: 700px;
-      margin: 30px auto;
-      box-shadow: 0 0 10px #8f00ff40;
-      text-align: left;
-    }
-
-    .faq h3 {
-      font-size: 0.8rem;
-      color: #e7caff;
-      text-shadow: 0 0 5px #b300ff;
-    }
-
-    .faq p {
-      font-size: 0.7rem;
-      color: #d4baff;
-    }
-
-    iframe {
-      border: none;
-      border-radius: 12px;
-      width: 350px;
-      height: 500px;
-      margin-top: 20px;
-      box-shadow: 0 0 15px #8f00ff;
-    }
-
-    footer {
-      background: #10001a;
-      color: #a675ff;
-      font-size: 0.6rem;
-      padding: 20px;
-      border-top: 2px solid #8f00ff;
-    }
-
-    .particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: #b300ff;
-      box-shadow: 0 0 8px #b300ff;
-      animation: float 6s infinite ease-in-out;
-    }
-
-    @keyframes float {
-      from { transform: translateY(100vh) scale(0.5); opacity: 0; }
-      50% { opacity: 1; }
-      to { transform: translateY(-10vh) scale(1); opacity: 0; }
+    @media(max-width:880px){
+      .hero-grid,.two{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .menu-btn{display:inline-flex; padding:.5rem .8rem; border:1px solid rgba(255,255,255,.1); border-radius:10px; color:var(--text); background:transparent}
     }
   </style>
 </head>
 <body>
-
-  <div class="particles">
-    <div class="particle" style="left:10%; animation-delay:0s;"></div>
-    <div class="particle" style="left:30%; animation-delay:2s;"></div>
-    <div class="particle" style="left:50%; animation-delay:1s;"></div>
-    <div class="particle" style="left:70%; animation-delay:3s;"></div>
-    <div class="particle" style="left:90%; animation-delay:4s;"></div>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top">
+      <div class="brand-logo">EP</div>
+      <strong>Ender Pandas</strong>
+    </a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#rules">Rules</a>
+      <a href="#server">Server</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <button class="menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('show')">Menu</button>
   </div>
+</header>
 
-  <header>
-    <h1>👾 Ender Pandas</h1>
-    <h2>Chill with the Pandas — Enderman Style 🐼💜</h2>
-    <a href="https://discord.gg/b5q6YHeaJU" class="invite-btn" target="_blank">Join Our Discord</a>
-  </header>
-
-  <section>
-    <h2>About</h2>
-    <p>Welcome to <strong>Ender Pandas</strong> — an Enderman-vibe community where everyone hangs out, plays LemonCloud Minecraft, and chills with friendly gamers. Stay kind, stay chill, and stay glowing 💜</p>
-  </section>
-
-  <section>
-    <h2>FAQ</h2>
-    <div class="faq">
-      <h3>❓ Who can join?</h3>
-      <p>Anyone! The Ender Pandas community includes kids, teens, and gamers of all ages — all we ask is respect and chill vibes.</p>
-
-      <h3>🎮 What games do you play?</h3>
-      <p>Mostly <strong>LemonCloud Minecraft</strong>, but also Roblox, Fortnite, and whatever the Ender Pandas feel like playing.</p>
-
-      <h3>🕹️ How do I join?</h3>
-      <p>Click the button above to enter the End dimension — also known as our Discord!</p>
+<main id="main" class="container">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-grid">
+      <div>
+        <h1>Welcome to Ender Pandas</h1>
+        <p>A chill Discord community with Enderman vibes. We hang out, play on <strong>LemonCloud</strong>, and relax together. Includes kids, teens, and gamers of all kinds.</p>
+        <div class="btns">
+          <a class="btn primary" href="https://discord.gg/b5q6YHeaJU" target="_blank" rel="noopener">Join the Discord</a>
+          <a class="btn ghost" href="#server">View Server Widget</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-title">Inside the Server</div>
+        <div class="grid-3">
+          <div class="feature card">
+            <h3>🎮 LemonCloud Fun</h3>
+            <p class="muted">Most Pandas love building and PvPing on LemonCloud MC.</p>
+          </div>
+          <div class="feature card">
+            <h3>💬 Friendly Chat</h3>
+            <p class="muted">Chill talks, memes, and a welcoming vibe for everyone.</p>
+          </div>
+          <div class="feature card">
+            <h3>🐼 Events</h3>
+            <p class="muted">Mini-games, build contests, and giveaways coming soon!</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Live Discord Widget</h2>
-    <iframe src="https://discord.com/widget?id=1412522113088094280&theme=dark" allowtransparency="true"></iframe>
+  <!-- ABOUT -->
+  <section id="about" class="two">
+    <div class="card">
+      <div class="section-title">About Ender Pandas</div>
+      <p>Ender Pandas is a chillout Discord community built around positivity and gaming. Everyone’s welcome — just keep the vibes kind and respectful.</p>
+      <p class="muted">We hang out mostly around Minecraft servers like LemonCloud but talk about other games too!</p>
+    </div>
+    <div class="card">
+      <div class="section-title">Quick Links</div>
+      <ul>
+        <li><a href="#rules">Server Rules</a></li>
+        <li><a href="#server">Live Widget</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
   </section>
 
-  <footer>
-    <p>© 2025 Ender Pandas | Stay Chill in the End 💜</p>
-  </footer>
+  <!-- RULES -->
+  <section id="rules" class="card">
+    <div class="section-title">Rules (Keep it Simple)</div>
+    <ol class="rules">
+      <li>Be kind — no bullying or hate speech.</li>
+      <li>Keep it family-friendly — no NSFW or swearing.</li>
+      <li>No spam or self-promo outside proper channels.</li>
+      <li>Follow Discord ToS and guidelines.</li>
+      <li>Respect staff and use common sense.</li>
+    </ol>
+  </section>
 
+  <!-- SERVER -->
+  <section id="server" class="two">
+    <div class="card widget-wrap">
+      <div class="section-title">Live Discord Widget</div>
+      <iframe class="widget"
+        src="https://discord.com/widget?id=1412522113088094280&theme=dark"
+        allowtransparency="true"
+        sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+      </iframe>
+    </div>
+    <div class="card">
+      <div class="section-title">How to Join</div>
+      <p>Click the <strong>Join the Discord</strong> button above, verify in #welcome, and meet the Pandas 🐼</p>
+      <p class="muted">If the widget doesn’t load, allow Discord embeds in your browser.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="card">
+    <div class="section-title">FAQ</div>
+    <details>
+      <summary>Does the server include kids?</summary>
+      <p>Yes — the community includes kids, teens, and gamers of all ages as long as they’re respectful and friendly.</p>
+    </details>
+    <details>
+      <summary>What’s the main game?</summary>
+      <p>We mostly play Minecraft on LemonCloud but talk about other games too!</p>
+    </details>
+    <details>
+      <summary>How active is the server?</summary>
+      <p>There’s always someone to chat with — especially during Minecraft sessions and events.</p>
+    </details>
+  </section>
+</main>
+
+<footer class="container">
+  <div class="two">
+    <div>
+      <strong>Ender Pandas</strong><br/>
+      <span class="muted">A chill Discord community with Enderman vibes.</span>
+    </div>
+    <div style="text-align:right">
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
